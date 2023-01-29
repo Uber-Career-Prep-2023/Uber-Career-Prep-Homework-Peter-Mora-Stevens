@@ -2,8 +2,8 @@
 Peter Mora-Stevens
 1/28/2023 10:50pm
 
-Time: mins for solution
-    : mins for testcases
+Time:25 mins for solution
+    :10 mins for testcases
 
 BackspaceStringcompare
 Algorithm: Two strings two-pointer
