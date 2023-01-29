@@ -1,0 +1,43 @@
+Comment Box Template
+
+"""
+Peter Mora-Stevens
+00:00 am/pm
+
+problem_name
+Time: __mins
+Solution: __mins
+Testcases: __mins
+
+problem description
+
+Algorithm: ______
+Time Complexity O(_)
+Space Complexity O(_)
+
+Information we know
+    - 
+
+Edge Cases
+    - 
+    
+Assumptions
+    - 
+    
+Difficulties
+    - 
+    
+Approach
+    -
+    a)
+
+"""
+
+
+Testcases Template
+
+if __name__ == "__main__":
+    
+    # provided
+    testcase = ""
+    print("Actual: ", function(), "Expected: ")
