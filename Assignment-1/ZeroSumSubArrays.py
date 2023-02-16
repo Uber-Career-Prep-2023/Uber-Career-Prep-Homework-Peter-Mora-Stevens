@@ -43,7 +43,7 @@ def ZeroSumSubArrays(inputArray):
     count = 0
     subArraySum = 0 # the value being checked against values in the set to see if we ever repeat values which means we have a subset which == 0
     storeSet = set()
-    storeSet.add(0) # adding 0 to check if the edge case that the first value is a 0
+    storeSet.add(0) # if 0 is seen, we know 0 is a 0 subarray
     
     # have not inputArray first as otherwise left to right checks throw an error
     if not inputArray or len(inputArray) == 0:
@@ -75,5 +75,8 @@ if __name__ == "__main__":
     
     testcase = None # input is none
     print("Actual: ", ZeroSumSubArrays(testcase), "Expected: 0 - input is none")
+    
+    testcase = [1,-1,1,-1,1,-1,1,-1]
+    print("Actual: ", ZeroSumSubArrays(testcase), "Expected: 4")
     
     
