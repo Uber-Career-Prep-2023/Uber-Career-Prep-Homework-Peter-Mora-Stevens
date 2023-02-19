@@ -39,9 +39,55 @@ Inital Approach - Not entirely used
     - d) once the substring is in the set, iterate the left pointer until the substring is no longer in the set
     - e) once the substring is no longer in the set, iterate right pointer and continue algorithm
     - f) return the count variable
+    
+New Approach - counting value occurances
+    - a) create two maps for character counting
+         while all the elements of the inputSubSequence aren't in section of the main string
+         continue adding characters
+    - b) once there are values all the values
+         start incrementing the left pointer and removing the values at that index from the count map
+         keep a count variable which updates each time a value is removed storing the min value
+    - c) return the count value
+         
 """
 
+def inSubSeq(inputSubStringMap, inputStringMap):
+    numElements = 0
+    
+    for c in inputSubStringMap.keys():
+        if inputStringMap.get(c, 0) >= inputSubStringMap[c]:
+            numElements += 1
+    if numElements == len(inputSubStringMap):
+        return True
+    return False
+
 def ShortestSubstring(inputString, inputSubString):
+    
+    if (not inputString or not inputSubString) or (len(inputString) == 0 or len(inputSubString) == 0):
+        return 0
+    
+    inputStringMap = {}
+    inputSubStringMap = {}
+    
+    count = len(inputString)
+    
+    for c in inputSubString:
+        inputSubStringMap[c] = 1 + inputSubStringMap.get(c, 0)
+    
+    l = 0
+    
+    for r in inputString:
+        inputStringMap[r] = 1 + inputStringMap.get(r, 0)
+        
+        while inSubSeq(inputSubStringMap, inputStringMap):
+            count = min(count, sum(inputStringMap.values()))
+            inputStringMap[inputString[l]] -= 1
+            l += 1
+        
+    return count
+                    
+    
+    """
     matchSet = set()
     minSubString = 0
     
@@ -60,7 +106,7 @@ def ShortestSubstring(inputString, inputSubString):
         else:
             r += 1
     return minSubString
-
+    """
 if __name__ == "__main__":
     
     # provided
