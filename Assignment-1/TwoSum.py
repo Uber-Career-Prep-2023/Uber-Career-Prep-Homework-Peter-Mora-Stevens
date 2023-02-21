@@ -66,7 +66,7 @@ if __name__ == "__main__":
     print("Actual: ", TwoSum(nums, k), "Expected: 5") # 5 expected even though 6 was there, the pairs show this on the page
     
     nums, k = [4, 3, 3, 5, 7, 0, 2, 3, 8, 6], 1
-    print("Actual: ", TwoSum(nums, k), "Expected: 0") # no values can ve found
+    print("Actual: ", TwoSum(nums, k), "Expected: 0") # no values can be found
     
     # edge cases
     nums, k = [], 3
