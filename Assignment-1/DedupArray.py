@@ -12,7 +12,7 @@ problem description
 
 Algorithm: ...using sets as they're implemented in python, probably not the most efficient method, if there's anything better than O(n)
 Time Complexity O(n) where n is the size of the input array
-Space Complexity O(n) where n the amount of unique elements in the set
+Space Complexity O(1) where n the amount of unique elements in the set
 
 Information we know
     - we are given a list of duplicating integers
@@ -35,17 +35,17 @@ Approach
 """
 def DedupArray(inputArray):
     
-    dupSet = set()
+    maxSeen = 0
     
     inputSize = len(inputArray) - 1
     i = 0
     while i < inputSize:
-        while i <= inputSize and inputArray[i] in dupSet:
+        while i <= inputSize and inputArray[i] == maxSeen:
             inputArray.pop(i)
             inputSize -= 1
             
-        if i <= inputSize and inputArray[i] not in dupSet:
-            dupSet.add(inputArray[i])
+        if i <= inputSize and inputArray[i] != maxSeen:
+            maxSeen = inputArray[i]
             i += 1
             
     return inputArray
