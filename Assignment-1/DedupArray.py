@@ -12,7 +12,7 @@ problem description
 
 Algorithm: ...using sets as they're implemented in python, probably not the most efficient method, if there's anything better than O(n)
 Time Complexity O(n) where n is the size of the input array
-Space Complexity O(n) where n is the size of the input array
+Space Complexity O(n) where n the amount of unique elements in the set
 
 Information we know
     - we are given a list of duplicating integers
@@ -27,13 +27,29 @@ Difficulties
     - 
     
 Approach
-    - create a set, store the input array in the set to remove duplicates, return the set as a list
-    a) 
+    a) we will need to look at every element of the array
+    b) to tell if we have a duplicate, we add it to a set
+    c) if ever seen again, we pop at the current index until no more values appear and iterate index
+        use a while loop to make sure we don't index out of bounds
 
 """
 def DedupArray(inputArray):
-    inputSet = set(inputArray)
-    return list(inputSet)
+    
+    dupSet = set()
+    
+    inputSize = len(inputArray) - 1
+    i = 0
+    while i < inputSize:
+        while i <= inputSize and inputArray[i] in dupSet:
+            inputArray.pop(i)
+            inputSize -= 1
+            
+        if i <= inputSize and inputArray[i] not in dupSet:
+            dupSet.add(inputArray[i])
+            i += 1
+            
+    return inputArray
+                
 
 
 if __name__ == "__main__":
