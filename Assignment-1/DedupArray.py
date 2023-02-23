@@ -4,15 +4,15 @@ Peter Mora-Stevens
 12:02 am
 
 DedupArray
-Time: 7mins # This feels like cheating, probably a coding solution which is better than my solution which requires an algorithm
+Time: 7mins
 Solution: 4mins
 Testcases: 3mins
 
 problem description
 
-Algorithm: ...using sets as they're implemented in python, probably not the most efficient method, if there's anything better than O(n)
-Time Complexity O(n) where n is the size of the input array
-Space Complexity O(1) where n the amount of unique elements in the set
+Algorithm: linear search
+Time Complexity O(n) where n is the size of the input array since we need to look at every element of the array
+Space Complexity O(1) as we only need to see if we've seen the same value, if any value is higher, we assign the higher value to the variable
 
 Information we know
     - we are given a list of duplicating integers
