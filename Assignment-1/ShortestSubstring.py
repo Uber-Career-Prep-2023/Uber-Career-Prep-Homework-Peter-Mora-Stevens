@@ -15,7 +15,7 @@ Testcases: unable to get to (added after the 40 minutes just to test my solution
 problem description
 
 Algorithm: Variable Size Sliding Window
-Time Complexity O(n*b) # we will be taking a single slide through the input string but also be searching the average len of the searched Set using the issubset function
+Time Complexity O(n^2) # we will be taking a single slide through the input string but also be searching the average len of the searched Set using the issubset function
 Space Complexity O(k) # where k is the average len of the substrings searched
 
 Edge Cases
@@ -49,17 +49,14 @@ New Approach - counting value occurances
          keep a count variable which updates each time a value is removed storing the min value
     - c) return the count value
          
+         
+Final Approach - check if we have all required values for checking.
+        using have and need, we can see if we are able to search the map (have must == need)
+        if yes, then loop and iterate count to be the smallest window
+        remove the value at left pointer from the counter map
+        if that value is less than the substring counter map decrement have
+        decrement left and continue while loop or go back to forloop
 """
-
-def inSubSeq(inputSubStringMap, inputStringMap):
-    numElements = 0
-    
-    for c in inputSubStringMap.keys():
-        if inputStringMap.get(c, 0) >= inputSubStringMap[c]:
-            numElements += 1
-    if numElements == len(inputSubStringMap):
-        return True
-    return False
 
 def ShortestSubstring(inputString, inputSubString):
     
@@ -75,13 +72,18 @@ def ShortestSubstring(inputString, inputSubString):
         inputSubStringMap[c] = 1 + inputSubStringMap.get(c, 0)
     
     l = 0
+    have, need = 0, len(inputSubStringMap)
     
-    for r in inputString:
-        inputStringMap[r] = 1 + inputStringMap.get(r, 0)
+    for r in range(len(inputString)):
+        inputStringMap[inputString[r]] = 1 + inputStringMap.get(inputString[r], 0)
+        if inputStringMap[inputString[r]] == inputSubStringMap.get(inputString[r], 0):
+            have += 1
         
-        while inSubSeq(inputSubStringMap, inputStringMap):
-            count = min(count, sum(inputStringMap.values()))
+        while have == need:
+            count = min(count, (r - l + 1))
             inputStringMap[inputString[l]] -= 1
+            if inputStringMap.get(inputString[l], 0) < inputSubStringMap.get(inputString[l], 0):
+                have -= 1
             l += 1
         
     return count
@@ -111,6 +113,7 @@ if __name__ == "__main__":
     
     # provided
     inputString, inputSubString = "abracadabra", "abc"
+
     print("Actual: ", ShortestSubstring(inputString, inputSubString), "Expected: 4")
     inputString, inputSubString = "zxycbaabcdwxyzzxwdcbxyzabcvbazyx", "zzyzx"
     print("Actual: ", ShortestSubstring(inputString, inputSubString), "Expected: 10")
@@ -122,3 +125,6 @@ if __name__ == "__main__":
     print("Actual: ", ShortestSubstring(inputString, inputSubString), "Expected: 0")
     inputString, inputSubString = "abracadabra", ""
     print("Actual: ", ShortestSubstring(inputString, inputSubString), "Expected: 0")
+    
+    inputString, inputSubString = "ccccccab", "abc"
+    print("Actual: ", ShortestSubstring(inputString, inputSubString), "Expected: 3")

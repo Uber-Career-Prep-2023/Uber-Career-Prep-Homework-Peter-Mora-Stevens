@@ -34,15 +34,15 @@ Inital Approach
 
 """
 def MissingInteger(missingIntArray, rangeVal):
-    searchSet = set(missingIntArray)
     
-    # python range function is not inclusive, and starts at 0, this hard codes 1 as the first value checked,
-    # and the +1 makes it inclusive, so at min, we're searching 1 to 1.
-    for num in range(1, rangeVal + 1):
-        if num in searchSet:
-            continue
-        else:
-            return num
+    # search the range minus 1 as we know one int is missing.
+    # since the input is sorted and incrementing by 1, we know that i + 1 should
+    # equal the current value, if not, return i + 1
+    # else we know that the array is finished and the missing value is only value not included so return the rangeVal
+    for i in range(rangeVal - 1):
+        if missingIntArray[i] != i + 1:
+            return i + 1
+    return rangeVal
 
 if __name__ == "__main__":
     

@@ -41,18 +41,16 @@ Approach
 def MergeIntervals(intervals):
     if not intervals or len(intervals) == 0:
         return []
-
-    merged = []
-    mergeI = 0
     
     intervals.sort()
     
-    for pairs in intervals:
-        if not merged or pairs[0] > merged[mergeI-1][1]:
-            merged.append(list(pairs))
-            mergeI += 1
-        elif pairs[0] <= merged[mergeI - 1][1]:
-            merged[mergeI-1][1] = max(merged[mergeI-1][1], pairs[1])
+    merged = [list(intervals[0])]
+    
+    for interval in intervals:
+        if interval[0] > merged[-1][1]:
+            merged.append(list(interval))
+        elif interval[0] <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], interval[1])
     
     return merged
 

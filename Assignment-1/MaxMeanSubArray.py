@@ -35,15 +35,14 @@ Inital Approach
 def MaxMeanSubArray(inputArray, k):
     
     maxMean = -1
-    beginWindow, endWindow = 0, k - 1
+    endWindow = k - 1
     
     if (len(inputArray) < k) or (not inputArray):
         return maxMean
     
     
     while endWindow != len(inputArray):
-        maxMean = max(maxMean, (sum(inputArray[beginWindow:endWindow + 1]) / k))
-        beginWindow += 1
+        maxMean = max(maxMean, (sum(inputArray[endWindow - k + 1:endWindow + 1]) / k))
         endWindow += 1
     return maxMean
 

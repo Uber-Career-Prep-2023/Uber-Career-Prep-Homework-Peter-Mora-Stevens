@@ -28,15 +28,13 @@ Difficulties
 Approach
     -
     a) loop through both the inputs and store in two hashmaps
-    b) create a count variable
     c) check through the first input and check if the second one has the value
-    d) if not, increase count variable, if count variable is greater than k return false
-    e) once done, return true
+    d) if not, decrement k, if k is less than 0 return false
+    e) once done, and no false return, return true
 """
 
 def KAnagrams(k, inputStringOne, inputStringTwo):
     mapOne, mapTwo = {}, {}
-    count = 0
     
     if len(inputStringOne) != len(inputStringTwo):
         return False
@@ -46,8 +44,8 @@ def KAnagrams(k, inputStringOne, inputStringTwo):
         mapTwo[inputStringTwo[i]] = 1 + mapTwo.get(inputStringTwo, 0)
     for c in mapOne:
         if mapOne[c] != mapTwo.get(c, 0):
-            count += 1
-            if count > k:
+            k -= 1
+            if k < 0:
                 return False
     return True
         
@@ -74,5 +72,8 @@ if __name__ == "__main__":
     print("Actual: ", KAnagrams(k, inputStringOne, inputStringTwo), "Expected: True")
     
     k, inputStringOne, inputStringTwo = 5, "", "peach" # one empty string, but not the same size
+    print("Actual: ", KAnagrams(k, inputStringOne, inputStringTwo), "Expected: False")
+    
+    k, inputStringOne, inputStringTwo = 5, "peachhhhhhh", "peach"
     print("Actual: ", KAnagrams(k, inputStringOne, inputStringTwo), "Expected: False")
     

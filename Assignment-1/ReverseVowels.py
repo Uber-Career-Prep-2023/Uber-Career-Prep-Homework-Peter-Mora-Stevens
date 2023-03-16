@@ -42,38 +42,23 @@ Approach
     - Once the loop ends, return the string
 """
 
-vowels = {"a", "e", "i", "o", "u"}
-
-def validLetter(c):
-    if (ord("a") <= ord(c) <= ord("z") or
-        ord("A") <= ord(c) <= ord("Z")):
-        return True
-    else:
-        return False
+vowels = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
 
 def ReverseVowels(inputString):
     l, r = 0, len(inputString) - 1
     
+    inputArray = list(inputString)
+    
     while l < r:
-        if (validLetter(inputString[l]) == False) and (validLetter(inputString[r]) == False):
+        if (inputArray[l] in vowels) and (inputArray[r] in vowels):
+            inputArray[l], inputArray[r] = inputArray[r], inputArray[l]
             l += 1
             r -= 1
-        elif (validLetter(inputString[l]) == True) and (validLetter(inputString[r]) == False):
-            r -= 1
-        elif (validLetter(inputString[l]) == False) and (validLetter(inputString[r]) == True):
+        elif (inputArray[l] not in vowels):
             l += 1
         else:
-            if (inputString[l].lower() in vowels) and (inputString[r].lower() in vowels):
-                inputStringList = list(inputString)
-                inputStringList[l], inputStringList[r] = inputStringList[r], inputStringList[l]
-                inputString = ''.join(inputStringList)
-                l += 1
-                r -= 1
-            elif (inputString[l] not in vowels) and (inputString[r] in vowels):
-                l += 1
-            else:
-                r -= 1
-    return inputString
+            r -= 1
+    return ''.join(inputArray)
 
 
 if __name__ == "__main__":

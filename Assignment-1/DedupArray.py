@@ -11,7 +11,8 @@ Testcases: 3mins
 problem description
 
 Algorithm: linear search
-Time Complexity O(n) where n is the size of the input array since we need to look at every element of the array
+Time Complexity O(n^2) where n is the size of the input array since we need to look at every element of the array and n^2
+                        because the pop op is only O(1) if the item being popped is at the end of an array (like a stack)
 Space Complexity O(1) as we only need to see if we've seen the same value, if any value is higher, we assign the higher value to the variable
 
 Information we know

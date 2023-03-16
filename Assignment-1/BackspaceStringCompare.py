@@ -7,7 +7,8 @@ Time:25 mins for solution
 
 BackspaceStringcompare
 Algorithm: Two strings two-pointer
-Time Complexity: O(n) where n is the size of the input string
+Time Complexity: O(n^2) where n is the size of the input string, and squared because the del op is O(n) and acts as an op in the looped work
+                 We would also see that with the split and join op in the called function
 Space Complexity: O(n) where n is the size of the input string, as we need to be able to remove values from the input string
 
 Information we know
@@ -38,34 +39,26 @@ def removeBackspace(inputString):
             del inputStringList[pointer - 1]
             pointer =- 1
         elif pointer == 0 and inputStringList[pointer] == "#":
-            return False
+            return "" # make sure to return a string (empty string is false)
         else:
             pointer += 1
-            continue
     inputString = ''.join(inputStringList)
     return inputString
 
 def BackspaceStringCompare(inputStringOne, inputStringTwo):
-    if removeBackspace(inputStringOne) == False:
+    var1 = removeBackspace(inputStringOne)
+    var2 = removeBackspace(inputStringTwo)
+    
+    if not var1 or not var2:
         return False
-    else:
-        inputStringOne = removeBackspace(inputStringOne)
-    if removeBackspace(inputStringTwo) == False:
-        return False
-    else:
-        inputStringTwo = removeBackspace(inputStringTwo)
     
     if len(inputStringOne) != len(inputStringTwo):
         return False
-    else:
-        i = 0
-        while i < len(inputStringOne):
-            if inputStringOne[i] == inputStringTwo[i]:
-                i += 1
-                continue
-            else:
-                return False
-        return True
+    
+    for i in range(len(inputStringOne)):
+        if inputStringOne[i] != inputStringTwo[i]:
+            return False
+    return True
     
 if __name__ == "__main__":
     
