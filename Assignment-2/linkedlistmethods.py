@@ -59,7 +59,10 @@ class Node:
             tail = curr
             curr = temp
         return tail
-
+    
+    def reverseRecursive(self, head):
+        pass
+    
 # Time Complexity: O(n) visits every node to print them
     def printNodes(self, head):
         output = ""
@@ -76,9 +79,9 @@ if __name__ == "__main__":
     head = head.insertAtFront(head, 100)
     head.insertAtBack(head, 70)
     head.insertAfter(100000, secondNode)
-    # head = head.deleteFront(head)
+    head = head.deleteFront(head)
     #head = head.deleteNode(head, head.next.next)
-    head.deleteBack(head)
+    #head.deleteBack(head)
     head = head.reverseIterative(head)
     head.printNodes(head)
     print(head.length(head))
