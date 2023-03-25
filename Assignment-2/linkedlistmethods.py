@@ -43,6 +43,7 @@ class Node:
         itr.next = loc.next
         return head
     
+    # Time Complexity: O(n) as we're having to look through every element in the LL
     def length(self, head):
         count, itr = 0, head
         while itr != None:
