@@ -1,3 +1,9 @@
+"""
+Question 2: Doubly Linked List
+Copy-paste your implementation from Question 1 and modify it.
+Your Node struct should have an additional prev reference as well as a next.
+"""
+
 class Node():
     def __init__(self, data, next=None, prev=None):
         self.data = data

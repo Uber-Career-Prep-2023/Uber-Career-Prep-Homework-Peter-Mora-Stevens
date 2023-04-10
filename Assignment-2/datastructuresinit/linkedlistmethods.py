@@ -1,3 +1,8 @@
+"""
+Question 1: Singly Linked List
+Implement the following methods. Rather than having a separate linked list class, we will pass a Node struct that 
+represents the head of the list (this is common practice in interview questions).
+"""
 class Node:
     def __init__(self, data, next=None):
         self.data = data
