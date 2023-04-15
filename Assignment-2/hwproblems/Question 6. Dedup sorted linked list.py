@@ -10,7 +10,7 @@ Time: 45 mins
 Solution: 15 (10 for psuedocode, 5 for implementation, 5-10 to understand last bug, last value wasn't being removed)mins
 Testcases: 20mins (LL Methods and making testcases were difficult)
 
-problem description
+Given a sorted singly linked list, remove any duplicates so that no value appears more than once.
 
 Algorithm: Simultaneous iteration two-pointer
 Time Complexity O(n)
