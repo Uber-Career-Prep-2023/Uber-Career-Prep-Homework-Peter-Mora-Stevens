@@ -18,7 +18,6 @@ Space Complexity O(n)
 
 Information we know
     - The input LL is sorted
-    - We must return the head of a new ll which is also sorted and has no dup values
 
 Edge Cases
     - What if input is null
@@ -30,6 +29,7 @@ Edge Cases
     
 Assumptions
     - All the values in the LL will be Ints, based on the language used ("values") and the testcases shown. Would ask if int's are the only datatypes in an interview though
+    - We must return the head of a new ll which is also sorted and has no dup values (at least that's my implementation, we could make an algorithm which does this in in-space O(1) memory but I can't think of a solution for that right now)
     
 Difficulties
     - Just figuring out the correct algorithm for keeping track of values, but with a sorted input head, this is much easier.
