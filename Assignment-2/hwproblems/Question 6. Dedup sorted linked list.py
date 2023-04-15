@@ -41,9 +41,6 @@ Approach
     c) use a while loop for the input LL, check the value currently being pointed at, against the value in the dummy LL, if they're not ==, make tail.next = LL
     d) we know the other case is that the values are equal, so don't do anything and at the end, the LL will update to LL.nextc
     e) once we're through the original list, check if output dummy.next != None, and if so return the head (dummy.next) otherwise, return -1, or any other value to specify that the LL is empty
-
-    - new approach, realized issues with previous approach, first O(n) time is fine, but O(n) space, we could improve, by making in-place changes.
-    a) use a reset/catchup pointer approach
 """
 
 class LLNode():
