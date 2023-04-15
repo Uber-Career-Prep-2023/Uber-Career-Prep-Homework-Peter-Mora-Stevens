@@ -94,8 +94,6 @@ class Node():
             output += str(itr.data) + "<-->"
             itr = itr.next
         print(output)
-    
-        
 
 
 if __name__ == "__main__":
