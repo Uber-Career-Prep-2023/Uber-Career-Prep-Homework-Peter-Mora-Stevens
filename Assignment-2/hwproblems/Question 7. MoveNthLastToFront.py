@@ -3,9 +3,9 @@ Peter Mora-Stevens
 1:00 pm
 
 Question 7. MoveNthLastToFront
-Time: __mins
-Solution: __mins
-Testcases: __mins
+Time: 35mins
+Solution: 15mins (10mins psuedocode, 5mins coding)
+Testcases: 20mins (10mins writing methods, 10mins testing bug... found in method, type in itr name didn't print LL correctly, code worked fine)
 
 Given a singly linked list, move the nth from the last element to the front of the list.
 
@@ -68,8 +68,7 @@ def NthLastToFront(head, k):
     if head.next == None:
         return head
     
-    first, second = head, head
-    length = 1
+    first, second, length = head, head, 1
     while first.next:
         if length >= k + 1:
             second = second.next
