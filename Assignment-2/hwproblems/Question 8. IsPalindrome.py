@@ -44,7 +44,7 @@ class Node():
         self.next = None
         self.prev = None
         
-    def print(self, head):
+    def printHere(self, head):
         output = ""
         itr = head
         while itr:
@@ -88,13 +88,13 @@ if __name__ == "__main__":
     head = Node(0)
     head = head.populate(vals)
     print("Actual:", IsPalendrome(head), " Expected: True")
-    print(head.print(head))
+    print(head.printHere(head))
     
     vals = [9, 12, 4, 2, 9]
     head = Node(0)
     head = head.populate(vals)
     print("Actual:", IsPalendrome(head), " Expected: False")
-    print(head.print(head))
+    print(head.printHere(head))
     
     head = None
     print("Actual:", IsPalendrome(head), " Expected: False")

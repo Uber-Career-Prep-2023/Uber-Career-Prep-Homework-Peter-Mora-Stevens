@@ -41,6 +41,9 @@ Approach
     c) use a while loop for the input LL, check the value currently being pointed at, against the value in the dummy LL, if they're not ==, make tail.next = LL
     d) we know the other case is that the values are equal, so don't do anything and at the end, the LL will update to LL.nextc
     e) once we're through the original list, check if output dummy.next != None, and if so return the head (dummy.next) otherwise, return -1, or any other value to specify that the LL is empty
+
+Optimizations
+    - we could remove the O(n) memory by making the solution a two pointer on the input LL
 """
 
 class LLNode():
@@ -48,7 +51,7 @@ class LLNode():
         self.data = data
         self.next = None
     
-    def print(self, head):
+    def printLL(self, head):
         output = ""
         itr = head
         while itr:
@@ -89,38 +92,38 @@ if __name__ == "__main__":
     head = head.populate(head, vals)
     newhead = LLNode(0)
     newhead.next = dedupSortedLL(head)
-    print("Actual: ", newhead.next.print(newhead.next), "Expected: 1, 2, 4, 5, 10",)
+    print("Actual: ", newhead.next.printLL(newhead.next), "Expected: 1, 2, 4, 5, 10",)
     
     vals = [8, 8, 8, 8]
     head = LLNode(vals[0])
     head = head.populate(head, vals)
     newhead = LLNode(0)
     newhead.next = dedupSortedLL(head)
-    print("Actual: ", newhead.next.print(newhead.next), "Expected: 8",)
+    print("Actual: ", newhead.next.printLL(newhead.next), "Expected: 8",)
     
     vals = []
     head = LLNode(None)
     head = head.populate(head, vals)
     newhead = LLNode(0)
     newhead.next = dedupSortedLL(head)
-    print("Actual: ", newhead.next.print(newhead.next), "Expected: -1",)
+    print("Actual: ", newhead.next.printLL(newhead.next), "Expected: -1",)
     
     vals = []
     head = None
     newhead = LLNode(0)
     newhead.next = dedupSortedLL(head)
-    print("Actual: ", newhead.next.print(newhead.next), "Expected: -1",)
+    print("Actual: ", newhead.next.printLL(newhead.next), "Expected: -1",)
     
     vals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     head = LLNode(vals[0])
     head = head.populate(head, vals)
     newhead = LLNode(0)
     newhead.next = dedupSortedLL(head)
-    print("Actual: ", newhead.next.print(newhead.next), "Expected: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",)
+    print("Actual: ", newhead.next.printLL(newhead.next), "Expected: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",)
     
     vals = [1]
     head = LLNode(vals[0])
     head = head.populate(head, vals)
     newhead = LLNode(0)
     newhead.next = dedupSortedLL(head)
-    print("Actual: ", newhead.next.print(newhead.next), "Expected: 1",)
+    print("Actual: ", newhead.next.printLL(newhead.next), "Expected: 1",)
