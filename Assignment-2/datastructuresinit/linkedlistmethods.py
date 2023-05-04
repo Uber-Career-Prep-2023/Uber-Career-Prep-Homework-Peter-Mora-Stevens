@@ -82,12 +82,14 @@ if __name__ == "__main__":
     head = Node(10)
     secondNode = Node(20)
     head.next = secondNode
+    thirdNode = Node(12345)
+    secondNode.next = thirdNode
     head = head.insertAtFront(head, 100)
     head.insertAtBack(head, 70)
-    head.insertAfter(100000, secondNode)
+    #head.insertAfter(100000, secondNode)
     head = head.deleteFront(head)
-    #head = head.deleteNode(head, head.next.next)
+    head = head.deleteNode(head, thirdNode)
     #head.deleteBack(head)
-    head = head.reverseIterative(head)
+    #head = head.reverseIterative(head)
     head.printNodes(head)
     print(head.length(head))
