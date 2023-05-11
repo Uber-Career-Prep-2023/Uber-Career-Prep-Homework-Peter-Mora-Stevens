@@ -9,9 +9,9 @@ Testcases: __mins
 
 problem description
 
-Algorithm: Fast and Slow pointers
+Algorithm: Adding nodes to a set
 Time Complexity O(n)
-Space Complexity O(1)
+Space Complexity O(n)
 
 Information we know
     - The input LL could or could not have a cycle
@@ -43,25 +43,43 @@ class Node():
         output = ""
         itr = head
         while itr:
-            output += itr.val + " --> "
+            output += str(itr.val) + " --> "
             itr = itr.next
         print(output)
-        
-    def populate(self, head, arr):
-        itr = head
-        for i in range(1, len(arr)):
-            itr.next = Node(arr[i])
-            itr = itr.next
-        return head
     
-    def DisconnectCycle(head):
-        fast, slow = head, head
-        while fast and fast.next:
-            if fast == slow:
-                pass
+    def DisconnectCycle(self, head):
+        node_set = set()
+        curr, prev = head, head
+        while curr:
+            if curr in node_set:
+                prev.next = None
+                return head
+            else:
+                node_set.add(curr)
+            if curr != head:
+                prev = prev.next
+            curr = curr.next
+        return head
 
 if __name__ == "__main__":
     
     # provided
+    head = Node(10)
+    head.next = Node(18)
+    head.next.next = Node(12)
+    head.next.next.next = Node(9)
+    head.next.next.next.next = Node(11)
+    head.next.next.next.next.next = Node(4)
+    head.next.next.next.next.next.next = head.next.next
+    head.DisconnectCycle(head)
+    print("Actual: ", head.printLL(head), "Expected: 10 -> 18 -> 12 -> 9 -> 11 -> 4")
     
-    print("Actual: ", function(), "Expected: ")
+    head = Node(10)
+    head.next = Node(18)
+    head.next.next = Node(12)
+    head.next.next.next = Node(9)
+    head.next.next.next.next = Node(11)
+    head.next.next.next.next.next = Node(4)
+    head.next.next.next.next.next.next = head.next.next.next.next.next
+    head.DisconnectCycle(head)
+    print("Actual: ", head.printLL(head), "Expected: 10 -> 18 -> 12 -> 9 -> 11 -> 4")
