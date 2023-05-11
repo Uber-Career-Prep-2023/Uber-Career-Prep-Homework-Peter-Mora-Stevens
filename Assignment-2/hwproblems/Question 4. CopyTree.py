@@ -30,11 +30,57 @@ Approach
     a) for every element in the queue, create 
 
 """
-
-
+class Node():
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+        
+    def print_inOrder(self, root):
+        res = []
+        def dfs(root):
+            if not root:
+                return root
+            
+            dfs(root.left)
+            res.append(root.val)
+            dfs(root.right)
+        dfs(root)
+        return res
+        
+def deepCopy(root):
+    def dfs(root, new_root):
+        if not root:
+            return None
+        
+        new_root = Node(root.val)
+        new_root.left = dfs(root.left, new_root.left)
+        new_root.right = dfs(root.right, new_root.right)
+        return new_root
+    return dfs(root, None)
+        
 
 if __name__ == "__main__":
     
     # provided
-    testcase = ""
-    print("Actual: ", function(), "Expected: ")
+    root = Node(10)
+    root.left = Node(8)
+    root.left.right = Node(9)
+    root.right = Node(16)
+    root.right.left = Node(13)
+    root.right.right = Node(17)
+    root.right.right.right = Node(20)
+    new_root = deepCopy(root)
+    print(root == new_root)
+    print("Actual: ", new_root.print_inOrder(new_root), "Expected: [8, 9, 10, 13, 16, 17, 20]")
+    
+    root = Node(10)
+    root.left = Node(8)
+    root.left.right = Node(9)
+    root.right = Node(16)
+    root.right.left = Node(13)
+    root.right.right = Node(17)
+    root.right.right.right = Node(15)
+    new_root = deepCopy(root)
+    print(root == new_root)
+    print("Actual: ", new_root.print_inOrder(new_root), "Expected: [8, 9, 10, 13, 16, 17, 15]")
