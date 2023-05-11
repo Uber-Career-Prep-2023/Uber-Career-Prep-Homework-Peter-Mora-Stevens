@@ -1,5 +1,3 @@
-Comment Box Template
-
 """
 Peter Mora-Stevens
 00:00 am/pm
@@ -11,30 +9,13 @@ Testcases: __mins
 
 problem description
 
-Algorithm: ______
+Algorithm/DS: ______
 Time Complexity O(_)
 Space Complexity O(_)
 
-Information we know
-    - 
-
-Edge Cases
-    - 
-    
-Assumptions
-    - 
-    
-Difficulties
-    - 
-    
-Approach
-    -
-    a)
-
+Approach pseduocode
 """
 
-
-Testcases Template
 
 if __name__ == "__main__":
     
