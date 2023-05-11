@@ -7,14 +7,7 @@ class Node():
 class BinarySearchTree():
     def __init__(self):
         self.root = None
-<<<<<<< HEAD
         
-    """
-    # first iteration, had the recursion in the body
-    # when it can be abstracted into its own function
-=======
-    
->>>>>>> 9edd71f7534c3f0c523741f11e17e3cb528932df
     
     def insert(self, val):
         def _insert(val, curr_node):
@@ -33,51 +26,6 @@ class BinarySearchTree():
         if not self.root:
             self.root = Node(val)
         else:
-<<<<<<< HEAD
-            if self.root.right:
-                self.root.right.insert(val)
-            else:
-                self.root.right = Node(val)     
-        """
-                
-                
-    def insert(self, val):
-        def recurseInsert(root, val):
-            if root == None:
-                root = Node(val)
-                return root
-            
-            if root.data > val:
-                root.left = recurseInsert(root.left, val)
-            else:
-                root.right = recurseInsert(root.right, val)
-            return root
-                
-        recurseInsert(self.root, val)
-
-    def search(self, target):
-        def recurse(root, target):
-            if not root:
-                return False
-
-            if target > root.val:
-                return recurse(root.right, target)
-            elif target < root.val:
-                return recurse(root.left, target)
-            else:
-                return True
-        return recurse(self.root, target)
-
-
-            
-if __name__ == "__main__":
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(20)
-    bst.insert(4)
-    
-    print(bst.search(4))
-=======
             _insert(val, self.root)
     
     def print_tree(self):
@@ -110,4 +58,3 @@ tree.insert(2000)
 tree.insert(0)
 tree.print_tree()
 tree.minimum()
->>>>>>> 9edd71f7534c3f0c523741f11e17e3cb528932df
