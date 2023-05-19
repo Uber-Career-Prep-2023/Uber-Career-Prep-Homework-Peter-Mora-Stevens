@@ -1,3 +1,5 @@
+from collections import deque
+
 """
 Peter Mora-Stevens
 
@@ -28,7 +30,10 @@ def make_adj_list(edges):
         nodes[src].append(dst)
     
     return nodes
-    
+
+# dfs from one node to target
+# O(E) - time (where E is the number of edges in the graph)
+# O(E) - space (call stack - recursion)
 def dfs(node, target, adj_list, visit):
     if node in visit:
         return 0
@@ -43,13 +48,36 @@ def dfs(node, target, adj_list, visit):
     
     return count
 
+
+# bfs checking the path from the starting node to the target node is in the graph
+# O(E) time - where E is the number of Edges in the graph
+# O(E) space - queue could hold all Edges in the graph
+def bfs(start, target, nodes):
+    q = deque([start])
+    visit = set()
+    
+    if not start:
+        return False
+    
+    while q:
+        for _ in range(len(q)):
+            curr = q.popleft()
+            visit.add(start)
+            
+            if curr == target:
+                return True
+            
+            for j in range(len(nodes[curr])):
+                q.append(nodes[curr][j])
+    return False
+
 if __name__ == "__main__":
     
     # provided
     testcase = [(1, 2), (2, 3), (1, 3), (3, 2), (2, 0)]
     print("Actual: ", make_adj_list(testcase), "Expected: 0: [], 1: [2, 3], 2: [0, 3], 3: [2]")
     print(dfs(1, 3, make_adj_list(testcase), set()))
+    print(bfs(1, 0, make_adj_list(testcase)))
     
     testcase = [("Hello", "Friend"), ("Bye", "Guy"), ("Lie", "Chai"), ("Lie", "Bye")]
     print("Actual: ", make_adj_list(testcase), "Expected: Hello: [Friend], Bye: [Guy], Lie: [Chai, Bye], Guy: [], Chai: []")
-    
