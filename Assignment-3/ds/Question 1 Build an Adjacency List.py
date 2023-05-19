@@ -52,7 +52,7 @@ def dfs(node, target, adj_list, visit):
 # bfs checking the path from the starting node to the target node is in the graph
 # O(E) time - where E is the number of Edges in the graph
 # O(E) space - queue could hold all Edges in the graph
-def bfs(start, target, nodes):
+def bfs(start, target, neighbors):
     q = deque([start])
     visit = set()
     
@@ -64,11 +64,12 @@ def bfs(start, target, nodes):
             curr = q.popleft()
             visit.add(start)
             
-            if curr == target:
-                return True
+            neighbor = neighbors[curr]
             
-            for j in range(len(nodes[curr])):
-                q.append(nodes[curr][j])
+            for neighbor in neighbors:
+                if neighbor == target:
+                    return True
+                q.append(neighbor)
     return False
 
 if __name__ == "__main__":
