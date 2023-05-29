@@ -64,21 +64,52 @@ def bfs(start, target, neighbors):
             curr = q.popleft()
             visit.add(start)
             
-            neighbor = neighbors[curr]
-            
-            for neighbor in neighbors:
+            for neighbor in neighbors[curr]:
                 if neighbor == target:
                     return True
                 q.append(neighbor)
     return False
 
+# this assumes our input is numbered in the range 0 to n
+# Time Complexity - O(V + E) that is, the number of Vertices and the number of Edges
+def topological(num_edges, adj):
+    res = []
+    visit = set()
+    path = set()
+    def topo_dfs(node):
+        if node in path:
+            # we have a cycle
+            return False
+        if node in visit:
+            # just fine, we've visited before, just don't add again
+            return True
+
+        path.add(node)
+        visit.add(node)
+        # check all the neighbors until we reach end of the search
+        for neighbor in adj[node]:
+            topo_dfs(neighbor)
+        path.remove(node)
+        res.append(node)
+        return True
+    
+    for i in range(1, num_edges):
+        # this would mean an invalid topological sort
+        if not topo_dfs(i): return []
+    #res.reverse()
+    return res
+
 if __name__ == "__main__":
     
     # provided
     testcase = [(1, 2), (2, 3), (1, 3), (3, 2), (2, 0)]
-    print("Actual: ", make_adj_list(testcase), "Expected: 0: [], 1: [2, 3], 2: [0, 3], 3: [2]")
-    print(dfs(1, 3, make_adj_list(testcase), set()))
-    print(bfs(1, 0, make_adj_list(testcase)))
+    print("Actual: ", make_adj_list(testcase), "Expected: 0: [], 1: [0], 2: [0], 3: [2,1]")
+    print(dfs(1, 3, make_adj_list(testcase), set()), "DFS")
+    print(bfs(1, 0, make_adj_list(testcase)), "BFS")
+    #testcase = [[1,0],[2,0],[3,1],[3,2]]
+    #print(topological(4, make_adj_list(testcase)), "Topological sort")
+    testcase = [[6,3],[6,5],[3,2],[5,4],[3,2],[4,1],[2,1]]
+    print(topological(7, make_adj_list(testcase)), "Topological sort")
     
     testcase = [("Hello", "Friend"), ("Bye", "Guy"), ("Lie", "Chai"), ("Lie", "Bye")]
     print("Actual: ", make_adj_list(testcase), "Expected: Hello: [Friend], Bye: [Guy], Lie: [Chai, Bye], Guy: [], Chai: []")
