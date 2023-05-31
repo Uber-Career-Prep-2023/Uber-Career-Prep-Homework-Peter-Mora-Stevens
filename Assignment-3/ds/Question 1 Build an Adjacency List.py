@@ -10,7 +10,7 @@ create the equivalent adjacency list/set representation (a map from element to a
 Pairs represent directed edges: (A, B) means there is an edge from A to B. 
 If the pair (B, A) is also provided then there is an undirected edge between A and B. For simplicity, 
 you may assume that each node of the graph stores an integer rather than a generic data type and that the elements are distinct. 
-Implement a basic DFS and BFS searching for a target value and a topological sort (using either DFS or Kahn’s algorithm).
+Implement a basic DFS and BFS searching for a target value and a topological sort (using either DFS or Kahn's algorithm).
 
 Algorithm/DS: Adjacency List - HashMap, DFS, Topological Sort
 
@@ -31,7 +31,7 @@ def make_adj_list(edges):
     
     return nodes
 
-# dfs from one node to target
+# dfs from one node to target - returns the number of valid paths from the node to the target
 # O(E) - time (where E is the number of edges in the graph)
 # O(E) - space (call stack - recursion)
 def dfs(node, target, adj_list, visit):
