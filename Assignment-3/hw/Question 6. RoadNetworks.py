@@ -3,9 +3,9 @@ Peter Mora-Stevens
 1:50 pm
 
 Question 6. Road Networks
-Time: __mins
-Solution: __mins
-Testcases: __mins
+Time: 40mins # had the main logic in around 10-15 minutes, but I got caught up on the undirected part of the problem
+Solution: 35mins
+Testcases: 5mins
 
 In some states, it is not possible to drive between any two towns because they are not connected to the same road network. 
 
@@ -24,11 +24,13 @@ Approach pseduocode
     
     for all elements in the list of cities, call a dfs on them
     - base case, if we run into a visited node, return
-    - if there is no more roads, return
     
     increment count if we call a dfs on a road which is not visited
     
     return count
+    
+Complications:
+    - Didn't read the question close enough to realize we had undirected edges, will remember to look for those hints
 """
 
 def num_networks(cities, roads):
