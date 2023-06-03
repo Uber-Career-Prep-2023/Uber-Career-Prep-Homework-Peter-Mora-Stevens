@@ -1,5 +1,3 @@
-from collections import deque
-
 """
 Peter Mora-Stevens
 12:20 pm
@@ -23,6 +21,8 @@ Create a bfs which starts from the input node, which goes to the result node.
 Only add nodes which are not the current color, as we know that would be the other color (red/blue).
 return target if found, if search is done and no target found, return -1
 """
+from collections import deque
+
 
 def alternating_paths(start, target, edges):
     if not edges: return -1
@@ -70,7 +70,3 @@ if __name__ == "__main__":
     edges = None
     start, target = "E", "B"
     print("Actual: ", alternating_paths(start, target, edges), "Expected: -1")
-    
-    
-    
-    
