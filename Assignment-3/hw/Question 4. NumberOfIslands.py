@@ -95,3 +95,36 @@ if __name__ == "__main__":
             [1,1,1,1,1],
             [1,1,1,1,1]]
     print("Actual: ", num_islands(board), "Expected: 1")
+    
+    
+    # cities = [b, a, c, d]
+    # roads = [(a,d),(b,a)]
+    # adj = {city:[] for city in cities}
+    # for city1, city2 in roads:
+    #     adj[city1].append(city2)
+    #     adj[city2].append(city1)
+    
+    # for city in cities:
+    #    if city not in visit:
+    #       count += 1
+    #       dfs()
+    
+    # edges = [(A, B, "blue"), (A, C, "red"), (B, D, "blue"), (B, E, "blue"), (C, B, "red"), (D, C, "blue"), (A, D, "red"), (D, E, "red"), (E, C, "red")]
+    
+    # Input: origin = A, destination = E
+    
+    # adj = {}
+    # for src, dst, color in edges:
+    #     adj[src] = adj.get(src, []).append([dst, color])
+
+    # level = 0
+    
+    # if color != new_color:
+        
+
+    #prev_color -> blue
+    
+    # src, dst, color = q.popleft()
+    
+    #     if color != nei_color:
+    #         q.append(src, dst, color)
