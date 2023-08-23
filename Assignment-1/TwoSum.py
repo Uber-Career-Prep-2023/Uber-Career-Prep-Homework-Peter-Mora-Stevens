@@ -36,22 +36,20 @@ Approach
 """
 
 
-def TwoSum(nums, k):
-    
-    if not nums or len(nums) == 0:
-        return 0
-    
-    numPairs = 0
-    
-    for l in range(len(nums)):
-        r = len(nums) - 1
-        while r > l:
-            if (nums[l] + nums[r]) == k:
-                numPairs += 1
-            r -= 1
-                
-    return numPairs
+# second iteration
+# Time: O(n)
+# Space: O(n)
+from collections import defaultdict
 
+def TwoSum(nums, k):
+    if not nums: return 0
+    res = 0
+    vals = defaultdict(int)
+    for num in nums:
+        diff = k - num
+        if diff in vals: res += vals[diff]
+        vals[num] += 1
+    return res
 
 if __name__ == "__main__":
     
@@ -63,7 +61,7 @@ if __name__ == "__main__":
     print("Actual: ", TwoSum(nums, k), "Expected: 3")
     
     nums, k = [4, 3, 3, 5, 7, 0, 2, 3, 8, 6], 6
-    print("Actual: ", TwoSum(nums, k), "Expected: 5") # 5 expected even though 6 was there, the pairs show this on the page
+    print("Actual: ", TwoSum(nums, k), "Expected: 5")
     
     nums, k = [4, 3, 3, 5, 7, 0, 2, 3, 8, 6], 1
     print("Actual: ", TwoSum(nums, k), "Expected: 0") # no values can be found

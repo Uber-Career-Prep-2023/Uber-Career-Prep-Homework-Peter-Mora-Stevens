@@ -34,7 +34,7 @@ Approach
         use a while loop to make sure we don't index out of bounds
 
 """
-def DedupArray(inputArray):
+"""def DedupArray(inputArray):
     
     maxSeen = 0
     
@@ -49,8 +49,23 @@ def DedupArray(inputArray):
             maxSeen = inputArray[i]
             i += 1
             
-    return inputArray
+    return inputArray"""
                 
+                
+                
+# Second iteration
+# Time: O(n)
+# Space: O(1)
+def DedupArray(arr):
+    
+    l = 0
+    for r in range(len(arr)):
+        if arr[l] != arr[r]:
+            l += 1
+            arr[l] = arr[r]
+    while len(arr) > l + 1: arr.pop()
+    return arr
+    
 
 
 if __name__ == "__main__":

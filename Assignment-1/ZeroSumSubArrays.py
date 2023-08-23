@@ -38,6 +38,8 @@ Approach
 
 """
 
+"""
+# first iteration
 def ZeroSumSubArrays(inputArray):
     
     count = 0
@@ -57,6 +59,37 @@ def ZeroSumSubArrays(inputArray):
             storeSet.add(subArraySum)
             
     return count
+"""
+
+
+
+
+
+
+
+
+
+# second iteration
+# Time: O(n)
+# Space: O(n)
+from collections import defaultdict
+
+def ZeroSumSubArrays(arr):
+    if not arr: return 0
+    # map to store the inputs and store the # of occurances
+    counts = defaultdict(int)
+    counts[0] = 1
+    res = 0
+    
+    # we want to use a prefix sum to find multi occurances of subarrays which sum to zero
+    prefix = 0
+    for n in arr:
+        prefix += n
+        if prefix in counts:
+            res += counts[prefix]
+        counts[prefix] += 1
+    
+    return res
 
 
 if __name__ == "__main__":
@@ -77,6 +110,4 @@ if __name__ == "__main__":
     print("Actual: ", ZeroSumSubArrays(testcase), "Expected: 0 - input is none")
     
     testcase = [1,-1,1,-1,1,-1,1,-1]
-    print("Actual: ", ZeroSumSubArrays(testcase), "Expected: 4")
-    
-    
+    print("Actual: ", ZeroSumSubArrays(testcase), "Expected: 16")

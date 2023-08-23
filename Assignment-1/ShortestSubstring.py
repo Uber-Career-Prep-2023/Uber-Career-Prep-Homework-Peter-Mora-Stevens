@@ -58,6 +58,10 @@ Final Approach - check if we have all required values for checking.
         decrement left and continue while loop or go back to forloop
 """
 
+# second iteration
+# Time: O(n)
+# Space: O(n)
+
 def ShortestSubstring(inputString, inputSubString):
     
     if (not inputString or not inputSubString) or (len(inputString) == 0 or len(inputSubString) == 0):

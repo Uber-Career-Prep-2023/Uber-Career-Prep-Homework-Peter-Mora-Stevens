@@ -7,8 +7,8 @@ Time: 10mins for solution
 MaxMeanSubArray
 
 Algorithm: Fixed-Size Sliding Window
-Time Complexity: O(n) where n is the size of the input array
-Space Complexity: O(1) there will be no additional storage allocated for this solution
+Time Complexity: O(n^2) where n is the size of the input array and we create slices which are possibly up to size n every iteration
+Space Complexity: O(n) slicing takes O(n) space as we have to create a new array potentially the size of the input
 
 Information we know
     - Values can be negatives
@@ -32,6 +32,10 @@ Inital Approach
     itterate max mean depending on the values
 """
 
+
+"""
+First iteration of the question
+
 def MaxMeanSubArray(inputArray, k):
     
     maxMean = -1
@@ -45,6 +49,36 @@ def MaxMeanSubArray(inputArray, k):
         maxMean = max(maxMean, (sum(inputArray[endWindow - k + 1:endWindow + 1]) / k))
         endWindow += 1
     return maxMean
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+# second iteration
+# Time: O(n)
+# Space: O(1)
+def MaxMeanSubArray(arr, k):
+    mean, res = 0, 0
+    l = 0
+    
+    for r, n in enumerate(arr):
+        mean += n
+        
+        if r < k-1: continue
+        
+        res = max(res, mean/k) # make sure its deci division
+        mean -= arr[l]
+        l += 1
+        
+    return res
 
 
 # main statement for test cases

@@ -33,7 +33,8 @@ Approach
     e) once done, and no false return, return true
 """
 
-def KAnagrams(k, inputStringOne, inputStringTwo):
+
+"""def KAnagrams(k, inputStringOne, inputStringTwo):
     mapOne, mapTwo = {}, {}
     
     if len(inputStringOne) != len(inputStringTwo):
@@ -47,7 +48,24 @@ def KAnagrams(k, inputStringOne, inputStringTwo):
             k -= 1
             if k < 0:
                 return False
-    return True
+    return True"""
+    
+    
+
+#Second iteration
+#Time: O(n)
+#Space: O(n)
+from collections import Counter
+
+def KAnagrams(k, s, t):
+    if len(s) != len(t): return False
+    tMap = Counter(t)
+    
+    diff = 0
+    for c in s:
+        if c in tMap and tMap[c]: tMap[c] -= 1
+        else: diff += 1
+    return diff <= k
         
 if __name__ == "__main__":
     

@@ -42,8 +42,8 @@ Approach
     - Once the loop ends, return the string
 """
 
-vowels = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
-
+"""
+first iteration
 def ReverseVowels(inputString):
     l, r = 0, len(inputString) - 1
     
@@ -59,6 +59,26 @@ def ReverseVowels(inputString):
         else:
             r -= 1
     return ''.join(inputArray)
+"""
+# Time: O(n) -> create new array, iterate through array, create new string
+# Space: O(n) -> storing vowels, creating list and string (python strs are immutable)
+def ReverseVowels(s):
+    s = list(s) # if inpt is allowed to be changed
+                # else make a new list with those values in constructor
+    vowels = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
+    
+    # two pointer traversal inwards with two cases
+    l, r = 0, len(s) - 1
+    while l < r:
+        if s[l] not in vowels: l += 1
+        elif s[r] not in vowels: r -= 1
+        else:
+            s[l], s[r] = s[r], s[l]
+            l += 1
+            r -= 1
+    
+    return "".join(s)
+
 
 
 if __name__ == "__main__":

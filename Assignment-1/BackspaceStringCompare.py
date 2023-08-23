@@ -29,6 +29,8 @@ Inital Approach
     - else, check the values and compare
     
 """
+
+"""
 # remove backspaced values from strings
 def removeBackspace(inputString):
     pointer = 0
@@ -59,6 +61,29 @@ def BackspaceStringCompare(inputStringOne, inputStringTwo):
         if inputStringOne[i] != inputStringTwo[i]:
             return False
     return True
+"""
+
+
+
+# Second iteration
+# Time: O(n)
+# Space: O(n)
+
+# create a function which removes the backspaces and returns a string
+def removeString(s):
+    stack = []
+    
+    for c in s:
+        if stack and c == "#": stack.pop()
+        else: stack.append(c)
+    return "".join(stack)
+# see if the two string which return are equal
+
+def BackspaceStringCompare(s, t):
+    return removeString(s) == removeString(t)
+
+
+
     
 if __name__ == "__main__":
     
@@ -79,5 +104,3 @@ if __name__ == "__main__":
     print("Actual: ", BackspaceStringCompare(testcaseOne, testcaseTwo), "Expected: False")
     testcaseOne, testcaseTwo = "", "" # two empty strings
     print("Actual: ", BackspaceStringCompare(testcaseOne, testcaseTwo), "Expected: True")
-    testcaseOne, testcaseTwo = "#", "#" # value is deleting a value not there
-    print("Actual: ", BackspaceStringCompare(testcaseOne, testcaseTwo), "Expected: False")
